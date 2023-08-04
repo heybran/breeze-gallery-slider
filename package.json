@@ -1,0 +1,41 @@
+{
+  "name": "breeze-gallery-slider",
+  "version": "0.1.0",
+  "type": "module",
+  "license": "MIT",
+  "author": "Brandon Zhang",
+  "description": "A simple gallery slider web components.",
+  "files": [
+    "index.js",
+    "dist" 
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "prepare": "husky install",
+    "build": "rollup -c"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heybran/breeze-gallery-slider.git"
+  },
+  "keywords": [
+    "javascript",
+    "web components"
+  ],
+  "bugs": {
+    "url": "https://github.com/heybran/breeze-gallery-slider/issues"
+  },
+  "homepage": "https://github.com/heybran/breeze-gallery-slider#readme",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.2",
+    "@rollup/plugin-terser": "^0.4.3",
+    "husky": "^8.0.3",
+    "prettier": "^2.8.8",
+    "pretty-quick": "^3.1.3",
+    "rollup": "^3.22.0",
+    "vite": "^4.4.8"
+  }
+}

@@ -1,0 +1,39 @@
+:host {
+  --thumbnail-gap: min(0.5rem, 6px);
+  --thumbnails-per-row: 4;
+  --thumbnail-active-border-color: blue;
+  --slider-width: 400px;
+  display: inline-flex;
+  width: var(--slider-width);
+  --gaps-per-row: calc(var(--thumbnails-per-row) - 1);
+  flex-direction: column;
+}
+article {
+  display: grid;
+  gap: var(--thumbnail-gap);
+  grid-template-columns: repeat(var(--thumbnails-per-row), 1fr);
+  margin-top: 1rem;
+}
+button {
+  padding: 0;
+  border: none;
+  background: transparent;
+  --size: calc((var(--slider-width) - var(--thumbnail-gap) * var(--gaps-per-row)) / var(--thumbnails-per-row));
+  width: var(--size);
+  height: var(--size);
+  cursor: pointer;
+}
+button.active {
+  border: 1px solid blue;
+}
+button:is(:hover, :focus-visible) {
+  outline: 1px solid blue;
+  outline-offset: 2px;
+}
+::slotted(img), img {
+  max-width: 100%;
+}
+picture {
+  display: inline-flex;
+  width: var(--slider-width);
+}
