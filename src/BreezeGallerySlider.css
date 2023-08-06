@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 :host {
   --thumbnail-gap: min(0.5rem, 6px);
   --thumbnails-per-row: 4;
@@ -8,12 +12,18 @@
   --gaps-per-row: calc(var(--thumbnails-per-row) - 1);
   flex-direction: column;
 }
+
+:host(:not(:defined)) {
+  display: none;
+}
+
 article {
   display: grid;
   gap: var(--thumbnail-gap);
   grid-template-columns: repeat(var(--thumbnails-per-row), 1fr);
   margin-top: 1rem;
 }
+
 button {
   padding: 0;
   border: none;
@@ -23,16 +33,21 @@ button {
   height: var(--size);
   cursor: pointer;
 }
+
 button.active {
   border: 1px solid blue;
 }
+
 button:is(:hover, :focus-visible) {
   outline: 1px solid blue;
   outline-offset: 2px;
 }
+
 ::slotted(img), img {
   max-width: 100%;
+  object-fit: cover;
 }
+
 picture {
   display: inline-flex;
   width: var(--slider-width);
