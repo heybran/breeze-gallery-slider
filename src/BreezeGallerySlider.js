@@ -43,7 +43,6 @@ export default class BreezeGallerySlider extends HTMLElement {
       const button = document.createElement('button');
       button.addEventListener('click', this.switchImage.bind(this));
       button.addEventListener('focusin', this.switchImage.bind(this));
-      button.setAttribute('onclick', 'this.getRootNode().host.switchImage(this)');
       const slot = document.createElement('slot');
       button.append(slot);
       const connection = 'img-' + index;
@@ -56,8 +55,16 @@ export default class BreezeGallerySlider extends HTMLElement {
   }
 
   switchImage(e) {
+    /** @type {HTMLButtonElement} */
+    let button;
     const activeButton = this.shadowRoot.querySelector('button.active');
-    const button = e.target;
+    if (e.type === 'focusin') {
+      button = e.target;
+    } else if (e.type === 'click') {
+      const img = e.target;
+      button = this.shadowRoot.querySelector(`button[data-connection=${img.slot}]`);
+    }
+    
     if (activeButton === button) {
       return;
     } 
